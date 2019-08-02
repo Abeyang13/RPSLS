@@ -8,9 +8,9 @@ namespace RPSLS
     {
         // member variables (HAS A)
         private int numberOfPlayers;
-        public Player player1;
-        public Player player2;
-        public int winningThreshold;
+        private Player player1;
+        private Player player2;
+        private int winningThreshold;
         // constructor
         public Game()
         {
@@ -59,99 +59,103 @@ namespace RPSLS
 
                 player1.ChooseGesture();
                 player2.ChooseGesture();
-
-                if (player1.gesture == "rock")
-                {
-                    if (player2.gesture == "scissors" || player2.gesture == "lizard")
-                    {
-                        Console.WriteLine(player1.name + " beat " + player2.name);
-                        player1.winCounter++;
-                    }
-                    else if (player2.gesture == "paper" || player2.gesture == "spock")
-                    {
-                        Console.WriteLine(player2.name + " beat " + player1.name);
-                        player2.winCounter++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("This was a Tie");
-                    }
-                }
-
-                else if (player1.gesture == "scissors")
-                {
-                    if (player2.gesture == "paper" || player2.gesture == "lizard")
-                    {
-                        Console.WriteLine(player1.name + " beat " + player2.name);
-                        player1.winCounter++;
-                    }
-                    else if (player2.gesture == "rock" || player2.gesture == "spock")
-                    {
-                        Console.WriteLine(player2.name + " beat " + player1.name);
-                        player2.winCounter++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("This was a Tie");
-                    }
-                }
-
-                else if (player1.gesture == "paper")
-                {
-                    if (player2.gesture == "rock" || player2.gesture == "spock")
-                    {
-                        Console.WriteLine(player1.name + " beat " + player2.name);
-                        player1.winCounter++;
-                    }
-                    else if (player2.gesture == "scissors" || player2.gesture == "lizard")
-                    {
-                        Console.WriteLine(player2.name + " beat " + player1.name);
-                        player2.winCounter++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("This was a Tie");
-                    }
-                }
-
-                else if (player1.gesture == "lizard")
-                {
-                    if (player2.gesture == "paper" || player2.gesture == "spock")
-                    {
-                        Console.WriteLine(player1.name + " beat " + player2.name);
-                        player1.winCounter++;
-                    }
-                    else if (player2.gesture == "rock" || player2.gesture == "scissors")
-                    {
-                        Console.WriteLine(player2.name + " beat " + player1.name);
-                        player2.winCounter++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("This was a Tie");
-                    }
-                }
-
-                else if (player1.gesture == "spock")
-                {
-                    if (player2.gesture == "rock" || player2.gesture == "scissors")
-                    {
-                        Console.WriteLine(player1.name + " beat " + player2.name);
-                        player1.winCounter++;
-                    }
-                    else if (player2.gesture == "paper" || player2.gesture == "lizard")
-                    {
-                        Console.WriteLine(player2.name + " beat " + player1.name);
-                        player2.winCounter++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("This was a Tie");
-                    }
-                }
+                GestureComparison();
                 Console.WriteLine("Current score: " + player1.name + ": " + player1.winCounter + " - " + player2.name + ": " + player2.winCounter + "\n");
             }
             DisplayWinner();
+        }
+
+        private void GestureComparison()
+        {
+            if (player1.gesture == "rock")
+            {
+                if (player2.gesture == "scissors" || player2.gesture == "lizard")
+                {
+                    Console.WriteLine(player1.name + " beat " + player2.name);
+                    player1.winCounter++;
+                }
+                else if (player2.gesture == "paper" || player2.gesture == "spock")
+                {
+                    Console.WriteLine(player2.name + " beat " + player1.name);
+                    player2.winCounter++;
+                }
+                else
+                {
+                    Console.WriteLine("This was a Tie");
+                }
+            }
+
+            else if (player1.gesture == "scissors")
+            {
+                if (player2.gesture == "paper" || player2.gesture == "lizard")
+                {
+                    Console.WriteLine(player1.name + " beat " + player2.name);
+                    player1.winCounter++;
+                }
+                else if (player2.gesture == "rock" || player2.gesture == "spock")
+                {
+                    Console.WriteLine(player2.name + " beat " + player1.name);
+                    player2.winCounter++;
+                }
+                else
+                {
+                    Console.WriteLine("This was a Tie");
+                }
+            }
+
+            else if (player1.gesture == "paper")
+            {
+                if (player2.gesture == "rock" || player2.gesture == "spock")
+                {
+                    Console.WriteLine(player1.name + " beat " + player2.name);
+                    player1.winCounter++;
+                }
+                else if (player2.gesture == "scissors" || player2.gesture == "lizard")
+                {
+                    Console.WriteLine(player2.name + " beat " + player1.name);
+                    player2.winCounter++;
+                }
+                else
+                {
+                    Console.WriteLine("This was a Tie");
+                }
+            }
+
+            else if (player1.gesture == "lizard")
+            {
+                if (player2.gesture == "paper" || player2.gesture == "spock")
+                {
+                    Console.WriteLine(player1.name + " beat " + player2.name);
+                    player1.winCounter++;
+                }
+                else if (player2.gesture == "rock" || player2.gesture == "scissors")
+                {
+                    Console.WriteLine(player2.name + " beat " + player1.name);
+                    player2.winCounter++;
+                }
+                else
+                {
+                    Console.WriteLine("This was a Tie");
+                }
+            }
+
+            else if (player1.gesture == "spock")
+            {
+                if (player2.gesture == "rock" || player2.gesture == "scissors")
+                {
+                    Console.WriteLine(player1.name + " beat " + player2.name);
+                    player1.winCounter++;
+                }
+                else if (player2.gesture == "paper" || player2.gesture == "lizard")
+                {
+                    Console.WriteLine(player2.name + " beat " + player1.name);
+                    player2.winCounter++;
+                }
+                else
+                {
+                    Console.WriteLine("This was a Tie");
+                }
+            }
         }
         private void DisplayWinner()
         {
