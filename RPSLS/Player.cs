@@ -4,20 +4,22 @@ using System.Text;
 
 namespace RPSLS
 {
-    class Player
+    abstract class Player
     {
         // member variables (HAS A)
-        public int playerNumber;
+        public string gesture;
+        public string name;
         public int winCounter;
+        
 
         // constructor
-        public Player(int playerNumber)
+        public Player()
         {
-            this.playerNumber = playerNumber;
             winCounter = 0;
         }
-
-
         // member methods (CAN DO)
+        public abstract void ChooseGesture();
+        public abstract void ChooseName();
+       
     }
 }
