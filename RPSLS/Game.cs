@@ -24,12 +24,27 @@ namespace RPSLS
         }
         private int GetNumberOfPlayers()
         {
-            Console.WriteLine("How many players 1 or 2?");
-            int numberOfPlayers = int.Parse(Console.ReadLine());
-            return numberOfPlayers;
-
+            try
+            {
+                Console.WriteLine("How many players 1 or 2?");
+                int numberOfPlayers = int.Parse(Console.ReadLine());
+                if (numberOfPlayers == 1 || numberOfPlayers == 2)
+                {
+                    return numberOfPlayers;
+                }
+                else
+                {
+                    return GetNumberOfPlayers();
+                }
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("Please enter 1 or 2");
+                return GetNumberOfPlayers();
+            }
+            
+            
         }
-
         private void SettingUpPLayer(int numberOfPlayers)
         {
             if (numberOfPlayers == 1)
@@ -50,7 +65,6 @@ namespace RPSLS
             SettingUpPLayer(numberOfPlayers);
             player1.ChooseName();
             player2.ChooseName();
-
 
             while (player1.winCounter < winningThreshold && player2.winCounter < winningThreshold)
             {
@@ -146,15 +160,17 @@ namespace RPSLS
                     {
                         Console.WriteLine("This was a Tie");
                     }
-
                 }
-                Console.WriteLine("Current score: " + player1.name + ": " + player1.winCounter + " - " + player2.name + ": "  + player2.winCounter + "\n");
+
+                else 
+                {
+                    Console.WriteLine("Please choose a correct gesture");
+                }
+                Console.WriteLine("Current score: " + player1.name + ": " + player1.winCounter + " - " + player2.name + ": " + player2.winCounter + "\n");
             }
             DisplayWinner();
         }
-
-
-            private void DisplayWinner()
+        private void DisplayWinner()
         {
             if (player1.winCounter == winningThreshold)
             {
@@ -166,6 +182,5 @@ namespace RPSLS
             }
             Console.WriteLine("Game over!");
         }
-
     }
 }

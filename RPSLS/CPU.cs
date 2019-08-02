@@ -19,10 +19,10 @@ namespace RPSLS
         public override void ChooseGesture()
         {
             Random random = new Random();
-            List<string> Gestures = new List<string>() { "Rock", "Scissors", "Paper", "Lizard", "Spock" };
+            List<string> Gestures = new List<string>() { "rock", "scissors", "paper", "lizard", "spock" };
             int generateChoice = random.Next(Gestures.Count);
             gesture = Gestures[generateChoice];
-            Console.WriteLine("CPU chose: " + gesture);
+            Console.WriteLine($"{name} chose: " + gesture);
         }
         public override void ChooseName()
         {
