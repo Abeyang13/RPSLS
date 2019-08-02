@@ -7,6 +7,7 @@ namespace RPSLS
     class Game
     {
         // member variables (HAS A)
+        private int numberOfPlayers;
         public Player player1;
         public Player player2;
         public int winningThreshold;
@@ -20,30 +21,17 @@ namespace RPSLS
         // member methods (CAN DO)
         private void DisplayRules()
         {
-            Console.WriteLine("Rules Of Game:\n Rock crushes Scissors\n Scissors cuts Paper\n Paper covers Rock\n Rock crushes Lizard\n Lizard poisons Spock\n Spock smashes Scissors\n Scissors decapitates Lizard\n Paper disproves Spock\n Spock vaporizes Rock");
+            Console.WriteLine("Rules of the Game: \nEach player makes a gesture choice.\nPlayer with the winning gesture gets 1 point for that turn.(Gesture Comparison)*\nPlayer who gets to 2 wins.  Wins the Game\n");
+            Console.WriteLine("Gesture Comparison:*\n Rock crushes Scissors\n Scissors cuts Paper\n Paper covers Rock\n Rock crushes Lizard\n Lizard poisons Spock\n Spock smashes Scissors\n Scissors decapitates Lizard\n Paper disproves Spock\n Spock vaporizes Rock");
         }
         private int GetNumberOfPlayers()
         {
-            try
+          Console.WriteLine("How many players 1 or 2?");
+          while(int.TryParse(Console.ReadLine(), out numberOfPlayers) && numberOfPlayers > 2 || numberOfPlayers < 1)
             {
-                Console.WriteLine("How many players 1 or 2?");
-                int numberOfPlayers = int.Parse(Console.ReadLine());
-                if (numberOfPlayers == 1 || numberOfPlayers == 2)
-                {
-                    return numberOfPlayers;
-                }
-                else
-                {
-                    return GetNumberOfPlayers();
-                }
+                Console.WriteLine("Incorrect!! Please enter 1 or 2 you Flamingo");
             }
-            catch(FormatException)
-            {
-                Console.WriteLine("Please enter 1 or 2");
-                return GetNumberOfPlayers();
-            }
-            
-            
+            return numberOfPlayers;
         }
         private void SettingUpPLayer(int numberOfPlayers)
         {
@@ -160,11 +148,6 @@ namespace RPSLS
                     {
                         Console.WriteLine("This was a Tie");
                     }
-                }
-
-                else 
-                {
-                    Console.WriteLine("Please choose a correct gesture");
                 }
                 Console.WriteLine("Current score: " + player1.name + ": " + player1.winCounter + " - " + player2.name + ": " + player2.winCounter + "\n");
             }
